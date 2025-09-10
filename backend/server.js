@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
-  origin: ['https://ai-powered-crypto-signal-project.vercel.app', 'http://localhost:5000', 'http://localhost:5173'],
+  origin: [/^https:\/\/ai-powered-crypto-signal-project(-[a-zA-Z0-9]+)?\.vercel\.app$/, 'http://localhost:5000', 'http://localhost:5173'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 }));
