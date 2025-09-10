@@ -115,7 +115,6 @@ function App() {
       setNewsError(null);
 
       try {
-        // Twelve Data OHLCV
         const interval = '1day';
         const outputsize = 200;
         const ohlcvResponse = await fetch(`${BACKEND_URL}/api/cryptocurrency/ohlcv/twelvedata-historical?symbol=${selected}&interval=${interval}&outputsize=${outputsize}`);
@@ -150,7 +149,7 @@ function App() {
         const currentSma50 = SMA.calculate({ values: closePrices, period: 50 }).slice(-1)[0] ?? 'N/A';
         const currentSma200 = SMA.calculate({ values: closePrices, period: 200 }).slice(-1)[0] ?? 'N/A';
 
-        setIndicators({
+        const updatedIndicators = {
           rsi: typeof currentRsi === 'number' ? parseFloat(currentRsi.toFixed(2)) : 'N/A',
           macd: typeof currentMacdObj.MACD === 'number' ? parseFloat(currentMacdObj.MACD.toFixed(4)) : 'N/A',
           macdSignal: typeof currentMacdObj.signal === 'number' ? parseFloat(currentMacdObj.signal.toFixed(4)) : 'N/A',
@@ -158,7 +157,9 @@ function App() {
           sma50: typeof currentSma50 === 'number' ? parseFloat(currentSma50.toFixed(4)) : 'N/A',
           sma200: typeof currentSma200 === 'number' ? parseFloat(currentSma200.toFixed(4)) : 'N/A',
           volume: currentCoin.volume24h || 0,
-        });
+        };
+
+        setIndicators(updatedIndicators);
 
         // AI analysis
         const aiRes = await fetch(`${BACKEND_URL}/api/ai/analyze-crypto`, {
@@ -169,10 +170,10 @@ function App() {
             currentPrice: currentCoin.currentPrice,
             percentChange24h: currentCoin.percentChange24h,
             marketCap: currentCoin.marketCap,
-            rsi: indicators.rsi,
-            macd: indicators.macd,
-            sma50: indicators.sma50,
-            sma200: indicators.sma200,
+            rsi: updatedIndicators.rsi,
+            macd: updatedIndicators.macd,
+            sma50: updatedIndicators.sma50,
+            sma200: updatedIndicators.sma200,
             volume: currentCoin.volume24h,
             news: news,
           }),
