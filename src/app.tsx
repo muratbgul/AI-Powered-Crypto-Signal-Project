@@ -75,7 +75,7 @@ function App() {
   useEffect(() => {
     const fetchCoins = async () => {
       try {
-        const response = await fetch('/api/cryptocurrency/listings/latest');
+        const response = await fetch('https://backend-ai-powered-crypto-signal-project.onrender.com/api/cryptocurrency/listings/latest');
         if (!response.ok) {
           const errorData = await response.json();
           throw new Error(`API Error: ${response.status} - ${errorData.error || response.statusText}`);
