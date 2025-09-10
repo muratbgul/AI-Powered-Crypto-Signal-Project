@@ -66,7 +66,7 @@ function App() {
   const [newsLoading, setNewsLoading] = useState<boolean>(false);
   const [newsError, setNewsError] = useState<string | null>(null);
 
-  const BACKEND_URL = 'https://backend-ai-powered-crypto-signal-project.onrender.com';
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
 
   useEffect(() => {
     const fetchCoins = async () => {
