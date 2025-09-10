@@ -1,0 +1,11 @@
+# Env dosyaları
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Node modules
+node_modules/
+
+# Log dosyaları
+*.log
