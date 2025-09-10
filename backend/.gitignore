@@ -6,6 +6,6 @@
 
 # Node modules
 node_modules/
-
+dist/
 # Log dosyaları
 *.log
