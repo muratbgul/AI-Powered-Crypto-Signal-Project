@@ -6,7 +6,11 @@ import 'dotenv/config'; // .env dosyasını yükler
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(cors({
+  origin: ['https://ai-powered-crypto-signal-project.vercel.app', 'http://localhost:5000', 'http://localhost:5173'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+}));
 app.use(express.json());
 
 // CoinMarketCap listings
