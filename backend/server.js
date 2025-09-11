@@ -13,6 +13,10 @@ app.use(cors({
 }));
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
 // CoinMarketCap listings
 app.get('/api/cryptocurrency/listings/latest', async (req, res) => {
   try {
