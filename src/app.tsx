@@ -586,8 +586,8 @@ function App() {
           </div>
 
           {/* AI Analysis Summary */}
+          <h2 className="text-xl font-semibold mb-4 w-full max-w-2xl">AI Analysis Summary</h2>
           <div className="w-full max-w-2xl flex justify-center">
-            <h2 className="text-xl font-semibold mb-4">AI Analysis Summary</h2>
             <div className="rounded-lg shadow p-6 text-lg font-semibold text-white w-full text-center bg-gradient-to-r from-blue-500 to-indigo-600">
               {aiSummary}
             </div>
